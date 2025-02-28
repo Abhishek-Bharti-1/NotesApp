@@ -10,9 +10,9 @@ import com.example.notesapplication.data.Note
 class HomeViewModel : ViewModel() {
 
     private val _notes = mutableStateListOf(
-        Note(title = "Note 1", content = "this is a note"),
-        Note(title = "Note 2", content = "this is a note"),
-        Note(title = "Note 3", content = "this is a note"),
+        Note(title = "Note 1", content = "this is a note 1"),
+        Note(title = "Note 2", content = "this is a note 2"),
+        Note(title = "Note 3", content = "this is a note 3"),
     )
     val notes : List<Note> get() = _notes
 

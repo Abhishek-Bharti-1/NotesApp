@@ -1,17 +1,21 @@
 package com.example.notesapplication
 
+import android.graphics.drawable.shapes.OvalShape
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.MaterialTheme
@@ -79,20 +83,20 @@ fun HomePage(homeViewModel: HomeViewModel = viewModel()) {
 
 @Composable
 fun NotesList(notes: List<Note>, onNoteClick: (Note) -> Unit) {
-    LazyColumn {
+    LazyColumn(
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+
         items(notes) { note ->
             Column(
-                modifier = Modifier.fillMaxWidth().background(color = Color.Cyan)
+                modifier = Modifier.fillMaxWidth().background(color = Color.Yellow, shape = CircleShape) .border(width = 2.dp, color = Color.Black, shape = CircleShape)
                     .padding(16.dp).clickable { onNoteClick(note) }
             ) {
             Text(
                 text = note.title,
                 style = MaterialTheme.typography.titleMedium
             )
-                Text(
-                    text = note.content,
-                    style = MaterialTheme.typography.bodyMedium
-                )
+
             }
         }
     }
